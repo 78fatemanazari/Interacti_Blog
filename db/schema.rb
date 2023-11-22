@@ -21,4 +21,13 @@ ActiveRecord::Schema.define(version: 2023_11_22_000000) do
     t.timestamps
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.integer "author_id" # Changed from "user_id" to "author_id"
+    t.string "title"
+    t.text "text"
+    t.integer "comments_counter", default: 0
+    t.integer "likes_counter", default: 0
+    t.timestamps
+  end
+
 end
