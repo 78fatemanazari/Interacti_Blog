@@ -44,4 +44,15 @@ ActiveRecord::Schema.define(version: 2023_11_22_000000) do
     t.timestamps
   end
 
+  
+  add_foreign_key "posts", "users", column: "author_id"
+  add_index "posts", ["author_id"], name: "index_posts_on_author_id"
+
+  add_foreign_key "comments", "users", column: "user_id"
+  add_foreign_key "comments", "posts", column: "post_id"
+  add_index "comments", ["user_id", "post_id"], name: "index_comments_on_user_id_and_post_id", unique: true
+
+  add_foreign_key "likes", "users", column: "user_id"
+  add_foreign_key "likes", "posts", column: "post_id"
+  add_index "likes", ["user_id", "post_id"], name: "index_likes_on_user_id_and_post_id", unique: true
 end
