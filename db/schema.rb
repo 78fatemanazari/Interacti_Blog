@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2023_11_22_000000) do
   enable_extension "plpgsql"
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "photo_url"
+    t.string "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.atlassian.com%2Fagile%2Fproject-management%2Fuser-stories&psig=AOvVaw1J-xVxhojIpVc0TBZFyJ8E&ust=1700761895664000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCPiD7v6V2IIDFQAAAAAdAAAAABAE"
     t.text "bio"
     t.integer "posts_counter", default: 0
     t.timestamps
