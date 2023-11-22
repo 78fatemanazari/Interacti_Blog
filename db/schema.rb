@@ -31,4 +31,11 @@ ActiveRecord::Schema.define(version: 2023_11_22_000000) do
     t.timestamps
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+    t.text "text"
+    t.timestamps
+  end
+
 end
