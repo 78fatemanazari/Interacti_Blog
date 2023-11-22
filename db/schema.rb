@@ -13,5 +13,12 @@
 ActiveRecord::Schema.define(version: 2023_11_22_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "photo_url" # Changed from "photo" to "photo_url"
+    t.text "bio"
+    t.integer "posts_counter", default: 0
+    t.timestamps
+  end
 
 end
