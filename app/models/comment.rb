@@ -4,3 +4,4 @@ class Comment < ApplicationRecord
 
   validates :text, presence: true
 end
+# New Line
