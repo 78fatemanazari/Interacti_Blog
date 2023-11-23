@@ -5,11 +5,13 @@ default: &default
 
 development:
   <<: *default
-  database: your_blog_app_development
+  database: interacti_blog_development
+  username: postgres
+  password: fatema
 
 test:
   <<: *default
-  database: your_blog_app_test
+  database: interacti_blog_test
 
 production:
   <<: *default
