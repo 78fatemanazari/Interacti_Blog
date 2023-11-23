@@ -8,3 +8,4 @@ class CreateLikes < ActiveRecord::Migration[7.1]
     end
   end
 end
+# New Line
