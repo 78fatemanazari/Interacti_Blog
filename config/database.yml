@@ -12,9 +12,11 @@ development:
 test:
   <<: *default
   database: interacti_blog_test
+  username: postgres
+  password: fatema
 
 production:
   <<: *default
   database: interacti_blog_production
-  username: interacti_blog
-  password: <%= ENV["INTERACTI_BLOG_DATABASE_PASSWORD"] %>
+  username: postgres
+  password: fatema
