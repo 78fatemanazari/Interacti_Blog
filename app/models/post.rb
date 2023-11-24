@@ -18,6 +18,6 @@ class Post < ApplicationRecord
   end
 
   def update_likes_counter
-    update(likes_counter: likes.count)
+    update_column(:likes_counter, likes.count)
   end
 end
