@@ -1,6 +1,8 @@
 class Like < ApplicationRecord
   belongs_to :user
   belongs_to :post
-end
 
-# New Line
+  def update_post_likes_counter
+    post.update(likes_counter: post.likes.count)
+  end
+end
