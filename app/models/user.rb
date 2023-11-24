@@ -7,7 +7,6 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :posts_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
-  # Updated attribute name to photo_url
   validates :photo_url, presence: true, format: { with: /\Ahttps?:\/\/.*\z/, message: "must be a valid URL" }
   validates :bio, length: { maximum: 500 }
 
