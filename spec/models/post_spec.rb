@@ -46,14 +46,14 @@ RSpec.describe Post, type: :model do
   end
 
   describe '#update_likes_counter' do
-  it 'updates the likes_counter' do
-    post = Post.create!(title: 'Valid Title', text: 'Valid text', comments_counter: 0, likes_counter: 0, author: user)
+    it 'updates the likes_counter' do
+      post = Post.create!(title: 'Valid Title', text: 'Valid text', comments_counter: 0, likes_counter: 0, author: user)
 
-    3.times { Like.create!(post: post, user: user) }
+      3.times { Like.create!(post:, user:) }
 
-    post.update_column(:likes_counter, post.likes.count)
+      post.update_column(:likes_counter, post.likes.count)
 
-    expect(post.reload.likes_counter).to eq(3)
+      expect(post.reload.likes_counter).to eq(3)
+    end
   end
-end
 end
