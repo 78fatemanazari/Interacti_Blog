@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
   def index
-    # Placeholder code
+    puts 'index'
   end
 
   def show
-    # Placeholder code
+    puts 'show'
   end
 end
