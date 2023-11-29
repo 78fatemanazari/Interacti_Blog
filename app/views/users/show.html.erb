@@ -9,7 +9,7 @@
     <div class='mb-4'>
         <h3 class='text-xl bp-4 text-gray-400'>Posts<h3>
         <ul class='flex flex-col gap-2'>
-            <% @user.three_recent_posts.each_with_index do |post, index| %>
+            <% @user.three_most_recent_posts.each_with_index do |post, index| %>
                 <li>
                     <%= render partial: 'partials/post_item', locals: { post: post, index:index } %>
                 </li>
