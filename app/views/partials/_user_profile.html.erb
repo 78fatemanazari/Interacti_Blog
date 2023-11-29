@@ -1,0 +1,15 @@
+<a href="/users/<%= user.id %>">
+  <div class='mb-4 flex gap-2 items-center rounded overflow-hidden shadow'>
+    <div class=''>
+      <%= image_tag user.photo, alt: "profil image", width: "100px", height: "100px" %>
+    </div>
+    <div class='relative w-full'>
+      <p class='text-3xl'>
+          <%= user.name %>
+      </p>
+      <span class='text-sm text-gray-400 absolute bottom-0 right-4'>
+        Number of posts: <%= user.posts_counter%>
+      </span>
+    </div>
+  </div>
+</a>
