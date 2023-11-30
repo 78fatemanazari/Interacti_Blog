@@ -1,5 +1,0 @@
-<%= form_with model: Like.new, url: likes_path, local: true do |form| %>
-  <%= form.hidden_field :post_id, value: @post.id %>
-
-  <%= form.submit 'Add Like' %>
-<% end %>
