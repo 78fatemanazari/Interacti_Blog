@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   def index
-    puts 'index'
+    @users = User.all
   end
 
   def show
-    puts 'show'
+    @user = User.find(params[:id])
+    @recent_posts = @user.three_most_recent_posts
   end
 end
