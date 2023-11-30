@@ -4,17 +4,13 @@ class PostsController < ApplicationController
 
   def index
     @posts = @user.posts
-    @comments = []
-
-    @posts.each do |post|
-      comments = post.comments.limit(5)
-      @comments << comments
-    end
+    @comments = fetch_comments(@posts)
   end
 
   def show
-    @post = Post.find(params[:id])
+    # No need to find @post again, as it's already set in the before_action
     @author = User.find(@post.author_id)
+    @comments = @post.comments.limit(5)
   end
 
   private
@@ -25,5 +21,15 @@ class PostsController < ApplicationController
 
   def set_post
     @post = @user.posts.find(params[:id])
+  end
+
+  def fetch_comments(posts)
+    comments = []
+
+    posts.each do |post|
+      comments << post.comments.limit(5)
+    end
+
+    comments
   end
 end
