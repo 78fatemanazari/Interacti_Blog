@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   root 'users#index'
   
   resources :users, only: [:index, :show] do
-    resources :posts, only: [:index, :show] do
-      resources :comments, only: [:index, :create] # Add more actions as needed
-      resources :likes, only: [:create] # Add more actions as needed
+    resources :posts, only: [:index, :show, :new, :create] do
+      resources :comments, only: [:new, :create] # Add more actions as needed
+      resources :likes, only: [:new, :create] # Add more actions as needed
     end
   end
 
