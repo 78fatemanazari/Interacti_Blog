@@ -26,22 +26,22 @@ class PostsController < ApplicationController
     @user = current_user
     @post = @user.posts.new(post_params)
     @post.author_id = @user.id
-  
+
     puts 'User:', @user.inspect
     puts 'Post:', @post.inspect
-  
+
     respond_to do |format|
       format.html do
         if @post.save
           flash[:success] = 'Post created successfully'
           redirect_to user_post_path(@user, @post)
         else
-          flash[:error] = 'Post creation failed: ' + @post.errors.full_messages.join(', ')
+          flash[:error] = "Post creation failed: #{@post.errors.full_messages.join(', ')}"
           render :new, status: :unprocessable_entity
         end
       end
     end
-  end  
+  end
 
   def post_params
     params.require(:post).permit(:title, :text, :author_id)
