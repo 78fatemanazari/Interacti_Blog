@@ -1,7 +1,6 @@
 # app/models/post.rb
 class Post < ApplicationRecord
-  belongs_to :author, class_name: 'User'
-  belongs_to :user, foreign_key: 'author_id'
+  belongs_to :author, class_name: 'User', foreign_key: 'author_id'
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
@@ -10,8 +9,12 @@ class Post < ApplicationRecord
   validates :comments_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :likes_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
+  after_create :update_user_posts_counter
+
+  private
+
   def update_user_posts_counter
-    author.update(posts_counter: author.posts.count)
+    author.update_posts_counter
   end
 
   def five_recent_comments

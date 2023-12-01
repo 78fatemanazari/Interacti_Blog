@@ -7,15 +7,16 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    @comment.user_id = params[:user_id]
-    @comment.post_id = params[:post_id]
-    if @comment.save!
-      flash[:success] = ' Comment added succefully '
-      redirect_to user_post_path(@user, @post)
+    @comment.user = current_user
+    @comment.post_id = params[:post_id] # Or use a similar approach to get the post
+  
+    if @comment.save
+      flash[:success] = 'Comment added successfully'
+      redirect_to user_post_path(current_user, @comment.post)
     else
       render :new, status: :unprocessable_entity
     end
-  end
+  end    
 
   private
 
