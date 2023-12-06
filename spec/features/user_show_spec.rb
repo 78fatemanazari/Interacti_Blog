@@ -27,8 +27,7 @@ RSpec.describe 'User show page', type: :feature do
   it 'displays the number of posts the user has written' do
     expect(page).to have_content('Number of posts: 1')
   end
-
-
+  
   it "displays a button to view all of a user's posts" do
     expect(page).to have_link('See all posts', href: user_posts_path(@user1))
   end
