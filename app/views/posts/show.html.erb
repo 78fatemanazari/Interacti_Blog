@@ -14,7 +14,7 @@
     <%= render 'comments/new' %>
   </div>
   <ul>
-    <% @post.comments.each do |comment| %>
+    <% @post.comments.includes([:user]) do |comment| %>
     <li><%= "#{comment.user.name}: #{comment.text}" %></li>
     <% end %>
   </ul>

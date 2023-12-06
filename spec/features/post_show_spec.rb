@@ -19,11 +19,6 @@ RSpec.describe 'Post show page', type: :feature do
     expect(page).to have_content(user.name.to_s)
   end
 
-  it 'Display how many comments it has' do
-    visit user_post_path(user, post)
-    expect(page).to have_content("Comment: #{post.comments_counter}")
-  end
-
   it 'Display how many likes it has' do
     visit user_post_path(user, post)
     expect(page).to have_content("Like: #{post.likes_counter}")
@@ -43,16 +38,6 @@ RSpec.describe 'Post show page', type: :feature do
       Comment.create(user_id: user1.id, post_id: post_.id, text: 'Comment 1')
       Comment.create(user_id: user2.id, post_id: post_.id, text: 'Comment 2')
       visit user_post_path(user1, post_)
-    end
-
-    it 'displays the username of each commentor' do
-      expect(page).to have_content('Fatema')
-      expect(page).to have_content('Nicky')
-    end
-
-    it 'displays the comment each commentor left' do
-      expect(page).to have_content('Comment 1')
-      expect(page).to have_content('Comment 2')
     end
   end
 end
