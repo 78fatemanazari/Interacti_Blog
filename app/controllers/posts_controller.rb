@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.includes(:comments, :likes).find(params[:id])
+    @post = Post.find(params[:id])
     @current_user = current_user
     @author = User.find(@post.author_id)
     @comments = @post.comments
@@ -14,29 +14,28 @@ class PostsController < ApplicationController
   end
 
   def new
-    @user = current_user
-    @post = @user.posts.new
-    respond_to do |format|
-      format.html { render :new, locals: { post: @post } }
+    if user_signed_in?
+      @user = current_user
+      @post = @user.posts.new
+      respond_to do |format|
+        format.html { render :new, locals: { post: @post } }
+      end
+      puts 'created'
+    else
+      redirect_to new_user_session_path, alert: 'Please log In'
     end
-    puts 'created'
   end
 
   def create
     @user = current_user
     @post = @user.posts.new(post_params)
     @post.author_id = @user.id
-
-    puts 'User:', @user.inspect
-    puts 'Post:', @post.inspect
-
     respond_to do |format|
       format.html do
         if @post.save
-          flash[:success] = 'Post created successfully'
+          flash[:success] = ' Post created '
           redirect_to user_post_path(@user, @post)
         else
-          flash[:error] = "Post creation failed: #{@post.errors.full_messages.join(', ')}"
           render :new, status: :unprocessable_entity
         end
       end
