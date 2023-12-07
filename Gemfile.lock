@@ -299,7 +299,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   capybara
-  devise (~> 4.9)
+  devise
   importmap-rails
   jbuilder
   pg (~> 1.1)
